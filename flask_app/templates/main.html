@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>Home Page</title>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <h1 class="title">Anime Review</h1>
+      <div class="userInfo">
+        <h2>{{currentUser.firstName}} {{currentUser.lastName}}</h2>
+      </div>
+      <div class="userButtons">
+        <a href="/anime/new" class="userAction">Add Review</a>
+        <form action="/logout" method="POST">
+          <input type="submit" value="Logout" class="userAction" />
+        </form>
+      </div>
+    </div>
+    <div class="content">
+      <h3>Reviewed Anime</h3>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Creator</th>
+          <th>Likes</th>
+          <th>Action</th>
+        </tr>
+        {% for anime in animes %}
+        <tbody>
+          <tr>
+            <td>
+              <a href="/anime/{{anime.id}}" class="showsTitle"
+                >{{anime.title}}</a
+              >
+            </td>
+            <td>{{anime.creator}}</td>
+            <td>{{anime.totalLikes}} likes</td>
+            <td>
+              {% if not anime.isLiked %}
+              <a href="/user/like/{{anime.id}}" class="action">Like</a>
+              {% else %}
+              <a href="/user/unlike/{{anime.id}}" class="action">Unlike</a>
+              {% endif %}
+              <a href="/anime/{{anime.id}}" class="action">View</a>
+              {% if currentUser.id == anime.user_id %}
+              <a href="/anime/edit/{{anime.id}}" class="action">Edit</a>
+              <a href="/anime/delete/{{anime.id}}" class="action">Delete</a>
+              {% endif %}
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

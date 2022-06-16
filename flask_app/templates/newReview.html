@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>New Review</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1 class="title">Anime Review</h1>
+      <div class="userInfo">
+        <h2>{{currentUser.firstName}} {{currentUser.lastName}}</h2>
+      </div>
+      <div class="userButtons">
+        <a href="/home" class="userAction">Back</a>
+        <form action="/logout" method="POST">
+          <input type="submit" value="Logout" class="userAction" />
+        </form>
+      </div>
+    </div>
+    <div class="content">
+      <h2>New Review</h2>
+      <div class="form">
+        <form action="/createAnime" method="post">
+          <label>Title: <input type="text" name="title" /></label>
+          <label>Creator: <input type="text" name="creator" /></label>
+          <label>Release year: <input type="number" name="year" /></label>
+          <label>Watch platform: <input type="text" name="platform" /></label>
+          <label style="padding-right: 15px">Genre:</label>
+          <select name="genre">
+            <option value="">--Select--</option>
+            {% for genre in genres %}
+            <option value="{{genre}}">{{genre}}</option>
+            {% endfor %}
+          </select>
+          <label>Thoughts: <input type="text" name="thoughts" /></label>
+          <input type="submit" value="Create" class="action" />
+        </form>
+      </div>
+    </div>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <p>{{message}}</p>
+    {% endfor %} {% endif %} {% endwith %}
+  </body>
+</html>

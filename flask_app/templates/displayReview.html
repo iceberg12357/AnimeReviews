@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>View Review</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1 class="title">Anime Review</h1>
+      <div class="userInfo">
+        <h2>{{currentUser.firstName}} {{currentUser.lastName}}</h2>
+      </div>
+      <div class="userButtons">
+        <a href="/home" class="userAction">Back</a>
+        <form action="/logout" method="POST">
+          <input type="submit" value="Logout" class="userAction" />
+        </form>
+      </div>
+    </div>
+    <div class="content">
+      <h2>Title: {{anime.title}}</h2>
+      <h3>Creator: {{anime.creator}}</h3>
+      <p>
+        First aired in {{anime.year}} <br />
+        Genre: {{anime.genre}}<br />Reviewed By: {{anime.firstName}}
+      </p>
+      <div>
+        <h3>Review:</h3>
+        <p style="width: 250px">{{anime.thoughts}}</p>
+      </div>
+    </div>
+  </body>
+</html>

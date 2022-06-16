@@ -1,0 +1,89 @@
+.logUndRegAction {
+  background-color: #f58800;
+}
+#logUndReg {
+  color: #f58800;
+  background-color: #051821;
+}
+.form {
+  width: 200px;
+}
+
+.navbar {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: #f58800;
+  background-color: #051821;
+  margin: -10px;
+}
+.action {
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 2px;
+  color: #1a4645;
+  background-color: #f8bc24;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.userAction {
+  width: 75px;
+  text-decoration: none;
+  padding: 2px;
+  color: #051821;
+  background-color: #f58800;
+  border-radius: 5px;
+  font-size: small;
+  margin: 2px;
+}
+
+table {
+  margin-top: -10px;
+}
+
+.title {
+  padding-right: 400px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+  background-color: #1a4645;
+}
+
+.userButtons {
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+body {
+  background-color: #266867;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f8bc24;
+}
+
+.showsTitle {
+  text-decoration: underline;
+  color: #f8bc24;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+h2 {
+  margin-left: -20px;
+}
+/* 
+#051821
+#1a4645
+#266867 
+#f58800
+#f8bc24
+*/
