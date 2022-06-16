@@ -15,7 +15,11 @@
     <div class="navbar">
       <h1 class="title">Anime Review</h1>
       <div class="userInfo">
-        <h2>{{currentUser.firstName}} {{currentUser.lastName}}</h2>
+        <h2>
+          <a href="/dashboard" class="name"
+            >{{currentUser.firstName}} {{currentUser.lastName}}</a
+          >
+        </h2>
       </div>
       <div class="userButtons">
         <a href="/home" class="userAction">Back</a>

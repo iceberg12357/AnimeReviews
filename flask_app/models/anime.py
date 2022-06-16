@@ -29,6 +29,16 @@ class Anime:
         return animes
 
     @classmethod
+    def getAllAnimesByUser(cls, data):
+        query = "SELECT * FROM animes LEFT JOIN users ON animes.user_id = users.id where animes.user_id = %(id)s"
+        results = connectToMySQL(cls.db_name).query_db(query,data)
+        animes = []
+        print(results)
+        for anime in results:
+            animes.append(cls(anime))
+        return animes
+
+    @classmethod
     def save(cls, data):
         query = "insert into animes (user_id, title, creator, year, platform, genre, thoughts) value (%(user_id)s, %(title)s, %(creator)s, %(year)s, %(platform)s, %(genre)s, %(thoughts)s);"
         results = connectToMySQL(cls.db_name).query_db(query,data)

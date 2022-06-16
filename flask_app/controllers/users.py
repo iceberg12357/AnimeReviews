@@ -63,6 +63,29 @@ def mainPage():
         each.totalLikes = likes
     return render_template('main.html', currentUser=oneUser, animes=animes)
 
+@app.route('/dashboard')
+def dashboard():
+    if 'user_id' not in session:
+        flash("Please login or register to proceed")
+        return redirect('/')
+    data = {
+        "id": session['user_id']
+    }
+    print(session['user_id'])
+    oneUser = User.getOne(data)
+    animes = anime.Anime.getAllAnimesByUser(data)
+    for each in animes:
+        info ={
+            'anime_id': each.id,
+            'user_id': session['user_id']
+        }
+        likes = like.Like.getAllLikes(info)
+        print(likes)
+        each.isLiked = like.Like.isLiked(info)
+        print(each.isLiked)
+        each.totalLikes = likes
+    return render_template('onesReviews.html', currentUser=oneUser, animes=animes)
+
 @app.route('/logout', methods=["POST"])
 def logout():
     session.clear()

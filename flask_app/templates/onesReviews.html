@@ -9,21 +9,17 @@
       type="text/css"
       href="{{ url_for('static', filename='style.css') }}"
     />
-    <title>Home Page</title>
+    <title>Dashboard</title>
   </head>
 
   <body>
     <div class="navbar">
       <h1 class="title">Anime Review</h1>
       <div class="userInfo">
-        <h2>
-          <a href="/dashboard" class="name"
-            >{{currentUser.firstName}} {{currentUser.lastName}}</a
-          >
-        </h2>
+        <h2>{{currentUser.firstName}} {{currentUser.lastName}}</h2>
       </div>
       <div class="userButtons">
-        <a href="/anime/new" class="userAction">Add Review</a>
+        <a href="/home" class="userAction">Back</a>
         <form action="/logout" method="POST">
           <input type="submit" value="Logout" class="userAction" />
         </form>
